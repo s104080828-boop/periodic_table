@@ -3,56 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>元素週期表互動式學習</title>
+  <title>元素週期表互動式學習｜GitHub Pages</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="hero">
-    <div>
-      <h1>元素週期表互動式學習</h1>
-      <p>點擊元素方塊，查看原子量、應用、常見化合物與課堂重點。內容設計對齊國中至高中自然／化學常見學習主題。</p>
+    <div class="hero-copy">
+      <div class="hero-kicker">國中／高中理化互動式學習</div>
+      <h1>元素週期表學習地圖</h1>
+      <p>首頁先用中文元素週期表建立整體概念，再點入各元素頁面，學習原子量、常見用途、代表性化合物與課程重點。</p>
       <div class="toolbar">
-        <input id="searchInput" type="search" placeholder="搜尋元素：中文、英文、符號、原子序">
-        <select id="familyFilter">
-          <option value="all">全部族群</option>
+        <input id="searchInput" type="search" placeholder="搜尋元素：中文／英文／符號／原子序">
+        <select id="familyFilter"><option value="all">全部族群</option></select>
+        <select id="modeSwitch" aria-label="學習模式切換">
+          <option value="junior">國中版</option>
+          <option value="senior">高中版</option>
         </select>
         <button id="randomBtn">隨機抽元素</button>
         <button id="resetBtn">重設</button>
       </div>
     </div>
-    <div class="legend" id="legend"></div>
+    <div class="dashboard-card">
+      <h2>學習進度</h2>
+      <div class="progress-stat"><span>已看元素</span><strong id="viewedCount">0 / 118</strong></div>
+      <div class="progress-bar"><span id="viewBar"></span></div>
+      <div class="progress-stat"><span>答對題數</span><strong id="quizScore">0</strong></div>
+      <div class="badge-wrap" id="badgeWrap"></div>
+    </div>
   </header>
 
-  <main class="layout">
-    <section>
+  <main class="layout-home">
+    <section class="table-panel card">
+      <div class="section-head">
+        <div>
+          <h2>中文元素週期表</h2>
+          <p>元素名稱在上，英文符號在下。點一下就進入該元素的詳細頁。</p>
+        </div>
+        <div class="legend" id="legend"></div>
+      </div>
       <div class="table-wrap">
         <div class="table-grid" id="periodicTable"></div>
       </div>
-      <div class="series-note">
-        <span>鑭系元素</span> 與 <span>錒系元素</span> 置於下方兩列，點擊後會在右側顯示詳細資訊。
-      </div>
+      <div class="series-note">鑭系與錒系元素置於下方兩列。滑過可預覽，點擊可開啟完整介紹頁。</div>
     </section>
 
-    <aside class="detail-panel" id="detailPanel">
-      <div class="placeholder">
-        <div class="placeholder-icon">🧪</div>
-        <h2>請先點選一個元素</h2>
-        <p>例如：碳、氧、鈉、鐵、銅、矽。</p>
-      </div>
+    <aside class="side-panel">
+      <section class="card preview-card" id="previewCard">
+        <div class="placeholder">
+          <div class="placeholder-icon">🧪</div>
+          <h2>先選一個元素吧</h2>
+          <p>例如：氫、碳、氧、鈉、矽、鐵、銅。</p>
+        </div>
+      </section>
+
+      <section class="card quiz-card">
+        <h2>闖關挑戰</h2>
+        <p>每次隨機抽一題，累積答對可以解鎖徽章。</p>
+        <button id="quizBtn">開始出題</button>
+        <div id="quizArea"></div>
+      </section>
     </aside>
   </main>
 
-  <section class="quiz-section">
-    <div class="quiz-card">
-      <h2>快速挑戰</h2>
-      <p>按下按鈕，系統會隨機出一道與元素用途或族群相關的小題目。</p>
-      <button id="quizBtn">開始挑戰</button>
-      <div id="quizArea"></div>
-    </div>
-  </section>
-
   <footer class="footer">
-    <p>建議部署：GitHub Pages。資料來源建議：IUPAC、PubChem、Royal Society of Chemistry、臺灣自然科學領域課綱。</p>
+    <p>建議資料來源：IUPAC 週期表、PubChem、Royal Society of Chemistry、臺灣自然科學領域課程綱要與教學脈絡。</p>
   </footer>
 
   <script src="data.js"></script>
